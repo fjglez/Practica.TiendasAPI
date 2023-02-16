@@ -38,7 +38,7 @@ namespace Practica.TiendasAPI.Controllers
             var (shops, metadata) = await _shopRepository.GetTiendasAsync(filterBy, query, pageSize, pageNumber);
             if(pageSize > MaxPageSize)
             {
-                _logger.LogWarning($"Se ha intentado introducir un tamaño de página demasiado grande: {pageSize}.");
+                _logger.LogWarning("Se ha intentado introducir un tamaño de página demasiado grande: {0}.", pageSize);
                 return BadRequest("El número máximo de tamaño de página es de " + MaxPageSize + ".");
             }
             Response.Headers.Add("X-Pagination", JsonSerializer.Serialize(metadata));
